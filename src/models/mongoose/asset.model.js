@@ -20,6 +20,10 @@ const AssetSchema = new Schema(
     },
     acquisitionDate: { type: Date, required: true },
     acquisitionValue: { type: Number, required: true, min: 0 },
+    category:{
+      type: Schema.Types.ObjectId,
+      ref: "category"
+    },
     // ! FALTA COMPLETAR ACA
   },
   { timestamps: true }

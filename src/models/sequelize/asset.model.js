@@ -22,3 +22,5 @@ export const AssetModel = sequelize.define("Asset", {
 // * 1:N User → Asset (responsible)
 // * 'assets' (User) y 'responsible' (Asset)
 // ! FALTA COMPLETAR ACA
+User.hasMany(Assetes, { foreignKey: 'user_id', as: 'assetes' });
+Assetes.belongsTo(User, { foreignKey: 'user_id', as: 'assetes' });

@@ -15,3 +15,12 @@ export const ProfileModel = sequelize.define("Profile", {
 // * 1:1 Profile ↔ User
 // * 'profile' (User) y 'user' (Profile)
 // ! FALTA COMPLETAR ACA
+User.hasOne(Profile, { foreignKey: 'user_id', as: 'profile' });
+Profile.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
+
+
+
+// ● User ↔ Profile: 'profile' (User) y 'user' (Profile)
+// ● User → Asset: 'assets' (User) y 'responsible' (Asset)
+// ● Asset ↔ Category: 'categories' (Asset) y 'assets' (Category) usando through:
+// AssetCategory para Sequelize

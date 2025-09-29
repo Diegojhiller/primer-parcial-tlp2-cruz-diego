@@ -1,5 +1,9 @@
+import { AssetModel } from "../models/mongoose/asset.model.js";
+
 export const createAsset = async (req, res) => {
   try {
+    const {brand, model, invetoryNumber , status } = req.body;
+    const assets = await createAsset({brand, model, invetoryNumber , status })
     // TODO: crear asset (usuario autenticado)
     return res.status(201).json({ msg: "Asset creado correctamente" });
   } catch (error) {
@@ -10,6 +14,7 @@ export const createAsset = async (req, res) => {
 
 export const getAllAssets = async (_req, res) => {
   try {
+    const assets = await AssetsModel.find.populate();
     // TODO: listar assets con el responsible y sus categories (populate) (solo admin)
     return res.status(200).json({ data: assets });
   } catch (error) {
@@ -20,6 +25,8 @@ export const getAllAssets = async (_req, res) => {
 
 export const getMyAssets = async (req, res) => {
   try {
+    const ID = req.params.id;
+        const myAssets = await AssetModel.findOne(ID);
     // TODO: assets con sus categories (populate) del usuario logueado (solo si el usuario logueado es responsible de assets)
     return res.status(200).json({ data: myAssets });
   } catch (error) {
@@ -29,6 +36,9 @@ export const getMyAssets = async (req, res) => {
 
 export const deleteAsset = async (req, res) => {
   try {
+    const assets = await assets.findById(req.params.id);
+    await assets.destroy();
+    
     // TODO: eliminar un asset (solo si el usuario logueado es el responsible del asset)
     return res.status(204).json({ msg: "Asset eliminado correctamente" });
   } catch (error) {
