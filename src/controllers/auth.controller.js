@@ -1,6 +1,3 @@
-import userModel from '..models/mongoose/user.model.js';
-import { comparePassword } from '../helper/bcrypt.helper.js';
-import { generateToken } from '../helper/jwt.helper.js';
 
 export const register = async (req, res) => {
   try {

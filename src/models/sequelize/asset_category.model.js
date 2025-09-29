@@ -8,5 +8,5 @@ export const AssetCategoryModel = sequelize.define("AssetCategory", {
 // * N:M Asset ↔ Category through AssetCategory
 // * 'categories' (Asset) y 'assets' (Category)
 // ! FALTA COMPLETAR ACA
-Assetes.belongsToMany( Category, { through: AssetCategory, foreignKey: 'user_id', as: 'assetes', onDelete: 'CASCADE'});
-Category.belongsToMany(Assetes, {through: AssetCategory, foreignKey: 'user_id', as: 'assetes',onDelete: 'CASCADE' });
+Assets.belongsToMany( Category, { through: AssetCategory, foreignKey: 'user_id', as: 'category', onDelete: 'CASCADE'});
+Category.belongsToMany(Assets, {through: AssetCategory, foreignKey: 'user_id', as: 'assets',onDelete: 'CASCADE' });
